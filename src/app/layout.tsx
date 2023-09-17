@@ -2,9 +2,9 @@
 
 import "./global.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat, Rokkitt } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "DocuSearch",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<ClerkProvider>
 			<html lang='en'>
-				<body className={inter.className}>{children}</body>
+				<body className={montserrat.className}>{children}</body>
 			</html>
 		</ClerkProvider>
 	);
