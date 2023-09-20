@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { UserButton, auth } from "@clerk/nextjs";
-import { User, LogIn } from "lucide-react";
+import { MessagesSquare, LogIn } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,8 +22,8 @@ export default async function Home() {
 					<div className='flex mt-2'>
 						{isAuth && (
 							<Button>
-								<User />
-								Login To Explore
+								<MessagesSquare className='w-4 h-4 flex justify-between mr-2 ' />
+								Chat With Doc
 							</Button>
 						)}
 					</div>
