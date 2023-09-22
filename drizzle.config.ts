@@ -8,7 +8,6 @@ export default {
 	driver: "pg",
 	schema: "./src/lib/db/schema.ts",
 	dbCredentials: {
-		connectionString: process.env.DATABASE_URL,
+		connectionString: process.env.DATABASE_URL ?? "",
 	},
 } satisfies Config;
- 
