@@ -2,6 +2,7 @@
 
 "use client";
 
+import { uploadToS3 } from "@/lib/Amazon-s3";
 import { Inbox } from "lucide-react";
 import React from "react";
 import { useDropzone } from "react-dropzone";
@@ -14,8 +15,19 @@ const FileUpload = () => {
 			"application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
 		},
 		maxFiles: 1,
-		onDrop: (acceptedFiles) => {
+		onDrop: async (acceptedFiles) => {
 			console.log(acceptedFiles);
+			const file = acceptedFiles[0];
+			if (file.size > 20 * 1024 * 1024) {
+				alert(`Please upload Below ${file.size}`);
+				return;
+			}
+			try {
+				const data = await uploadToS3(file);
+				console.log("data", data);
+			} catch (error) {
+				console.log("oops");
+			}
 		},
 	});
 	return (
